@@ -29,13 +29,14 @@ public class view extends AppCompatActivity {
 
         list=findViewById(R.id.list);
         final Cursor cursor=db.rawQuery("select * from records",null);
-        int id=cursor.getColumnIndex("1");
+        int id=cursor.getColumnIndex("id");
         int name=cursor.getColumnIndex("name");
         int course=cursor.getColumnIndex("course");
         int fee=cursor.getColumnIndex("fee");
         titleData.clear();
 
         arrayAdapter=new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,titleData);
+        list.setAdapter(arrayAdapter);
 //      Using the Student class to store the properties
         final ArrayList<Student> students = new ArrayList<Student>();
 
