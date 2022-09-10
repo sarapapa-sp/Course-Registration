@@ -95,13 +95,13 @@
         >
 
         <Button
+            android:id="@+id/btnok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:text="ok"
-            android:id="@+id/btnok"
             android:background="@color/colorPrimary"
-            />
+            android:text="ok" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
