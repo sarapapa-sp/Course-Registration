@@ -2,7 +2,6 @@ package com.example.coursereg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -66,6 +65,14 @@ public class Edit extends AppCompatActivity {
             }
         });
 
+        btndelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                calling the delete function to delete the data
+                remove();
+            }
+        });
+
     }
 
 
@@ -90,6 +97,28 @@ public class Edit extends AppCompatActivity {
 
         }catch (Exception exception){
             Toast.makeText(this,"Record was not edited.",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void remove(){
+        try{
+            String idData = id.getText().toString();
+
+            SQLiteDatabase db = openOrCreateDatabase("SQLite", Context.MODE_PRIVATE,null);
+
+            String sql = "delete from records where id =?";
+            SQLiteStatement statement=db.compileStatement(sql);
+
+            statement.bindString(1,idData);
+            statement.execute();
+
+            Toast.makeText(this,"Record was deleted successfully",Toast.LENGTH_SHORT).show();
+
+            Intent intent1=new Intent(getApplicationContext(),view.class);
+            startActivity(intent1);
+        }catch(Exception exception){
+
+            Toast.makeText(this,"Record was not deleted.",Toast.LENGTH_LONG).show();
         }
     }
 }
