@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class Edit extends AppCompatActivity {
     EditText name,course,fees,id;
     Button btnedit,btndelete;
+    Button btnBack;
 
 
 
@@ -33,6 +34,7 @@ public class Edit extends AppCompatActivity {
 //        Getting the buttons
         btnedit=findViewById(R.id.btnok);
         btndelete=findViewById(R.id.btnview);
+        btnBack=findViewById(R.id.btnback);
 
 //        getting the intent values
         Intent intent = getIntent();
@@ -47,7 +49,15 @@ public class Edit extends AppCompatActivity {
         fees.setText(intentFee);
         id.setText(intentId);
 
-//        adding the on click listners for edit and delete buttons
+//        adding the on click listners for edit , back  and delete buttons
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1=new Intent(getApplicationContext(),view.class);
+                startActivity(intent1);
+            }
+        });
+
         btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,12 +78,12 @@ public class Edit extends AppCompatActivity {
 
             SQLiteDatabase db = openOrCreateDatabase("SQLite", Context.MODE_PRIVATE,null);
 
-            String sql = "update records set name=? , course=? ,fees=? where id=?";
+            String sql = "update records set name=? , course=? ,fee=? where id=?";
             SQLiteStatement statement=db.compileStatement(sql);
             statement.bindString(1,nameData);
             statement.bindString(2,courseData);
             statement.bindString(3,feesData);
-            statement.bindString(3,idData);
+            statement.bindString(4,idData);
             statement.execute();
 
             Toast.makeText(this,"Record was edited successfully",Toast.LENGTH_LONG).show();

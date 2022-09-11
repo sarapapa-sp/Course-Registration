@@ -119,16 +119,25 @@
             android:id="@+id/btnok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:text="Edit" />
+
+        <Button
+            android:id="@+id/btnview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Delete" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Delete"
-            android:id="@+id/btnview"
+            android:text="Back"
+            android:id="@+id/btnback"
             android:background="@color/colorPrimary"
             />
     </LinearLayout>
