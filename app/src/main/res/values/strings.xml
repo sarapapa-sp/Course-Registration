@@ -4,4 +4,5 @@
     <string name="name">Name</string>
     <string name="course">Course</string>
     <string name="fees">Fees</string>
+    <string name="id">ID</string>
 </resources>

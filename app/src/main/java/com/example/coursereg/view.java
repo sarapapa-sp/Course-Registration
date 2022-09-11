@@ -3,6 +3,7 @@ package com.example.coursereg;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -67,7 +68,15 @@ public class view extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 String dataOfPosition = titleData.get(position).toString();
 
-                Toast.makeText(getApplicationContext(),dataOfPosition,Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),dataOfPosition,Toast.LENGTH_LONG).show();
+                Student data = students.get(position);
+                Intent intent = new Intent(getApplicationContext(),Edit.class);
+                intent.putExtra("id",data.id);
+                intent.putExtra("name",data.name);
+                intent.putExtra("course",data.course);
+                intent.putExtra("fee",data.fee);
+                startActivity(intent);
+
             }
         });
 
