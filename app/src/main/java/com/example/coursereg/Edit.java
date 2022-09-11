@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 public class Edit extends AppCompatActivity {
     EditText name,course,fees,id;
     Button btnedit,btndelete;
+
+
 
 
     @Override
@@ -30,6 +33,19 @@ public class Edit extends AppCompatActivity {
 //        Getting the buttons
         btnedit=findViewById(R.id.btnok);
         btndelete=findViewById(R.id.btnview);
+
+//        getting the intent values
+        Intent intent = getIntent();
+        String intentId = intent.getStringExtra("id").toString();
+        String intentName = intent.getStringExtra("name").toString();
+        String intentCourse = intent.getStringExtra("course").toString();
+        String intentFee = intent.getStringExtra("fee").toString();
+
+//        Setting the fields to the intent values
+        name.setText(intentName);
+        course.setText(intentCourse);
+        fees.setText(intentFee);
+        id.setText(intentId);
 
 //        adding the on click listners for edit and delete buttons
         btnedit.setOnClickListener(new View.OnClickListener() {
